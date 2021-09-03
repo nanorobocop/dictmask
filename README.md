@@ -2,7 +2,7 @@
 
 Mask applied on top of your data.
 Everything that is not whitelisted - will be removed from dict.
-Works for nested dicts and lists.
+Works with nested dicts and lists.
 
 Usage:
 
@@ -15,10 +15,10 @@ Usage:
    }
    ```
 
-1. Copy your data and mask: True for keep, False/None to remove
+1. Copy your data and prepare mask: True to keep field, False/None to remove
 
    ```python
-   data = {
+   mask = {
        "a": True,
        "b": False
    }
@@ -28,7 +28,7 @@ Usage:
 
     ```python
     dictmask(data, mask)
-    data = {
+    {
         "a": "A"
     }
     ```
