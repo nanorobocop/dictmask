@@ -35,15 +35,14 @@ def dictmask(data, mask, missing_keep=False):
 
         if isinstance(data[k], list) and isinstance(mask[k], list):
             if len(mask[k]) != 1:
-                ValueError("Mask inside list should have only one item")
+                raise ValueError("Mask inside list should have only one item")
             res2 = []
             for i in range(len(data[k])):
                 res2.append(dictmask(data[k][i], mask[k][0], missing_keep))
             res[k] = res2
         else:
             raise ValueError(
-                "Cannot proceed values with different types",
-                type(data[k]),
-                type(mask[k]),
+                f"Cannot proceed key {k} with values of different types:"
+                "{type(data[k])}, {type(mask[k])}"
             )
     return res

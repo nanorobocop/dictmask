@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+"""Tests for dictmask"""
+
 import pytest
 
 from ..dictmask import dictmask
@@ -51,4 +53,36 @@ from ..dictmask import dictmask
     ],
 )
 def test_dictmask(data, mask, masked):
+    """Test dictmask"""
     assert dictmask(data, mask) == masked
+
+
+@pytest.mark.parametrize(
+    "data,mask,exception",
+    [
+        (
+            {"a": "A"},
+            {"a": 1},
+            ValueError,
+        ),
+        (
+            {"a": "A"},
+            {"a": "A"},
+            ValueError,
+        ),
+        (
+            {"a": "A"},
+            {"a": [{"b": "B"}]},
+            ValueError,
+        ),
+        (
+            {"a": [{"b": "B"}]},
+            {"a": [{"b": True}, {"c": True}]},
+            ValueError,
+        ),
+    ],
+)
+def test_dictmask_exception(data, mask, exception):
+    """Test dictmask with negative cases"""
+    with pytest.raises(exception):
+        assert dictmask(data, mask)
