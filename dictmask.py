@@ -43,7 +43,7 @@ def dictmask(data, mask, missing_keep=False):
         else:
             raise ValueError(
                 "Cannot proceed values with different types",
-                type(data),
-                type(mask),
+                type(data[k]),
+                type(mask[k]),
             )
     return res
