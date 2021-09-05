@@ -43,6 +43,11 @@ from ..dictmask import dictmask
             {"a": [{"b": False}]},
             {"a": [{}]},
         ),
+        (
+            {"a": None},
+            {"a": [{"b": False}]},
+            {"a": None},
+        ),
     ],
 )
 def test_dictmask(data, mask, masked):

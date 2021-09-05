@@ -22,11 +22,11 @@ def dictmask(data, mask, missing_keep=False):
                 res[k] = v
             continue
 
-        if mask[k] is True:
-            res[k] = v
+        if mask[k] is None or mask[k] is False:
             continue
 
-        if mask[k] is None or mask[k] is False:
+        if mask[k] is True or data[k] is None:
+            res[k] = v
             continue
 
         if isinstance(data[k], dict) and isinstance(mask[k], dict):
