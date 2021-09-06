@@ -43,6 +43,6 @@ def dictmask(data, mask, missing_keep=False):
         else:
             raise ValueError(
                 f"Cannot proceed key {k} with values of different types:"
-                "{type(data[k])}, {type(mask[k])}"
+                f"{type(data[k])}, {type(mask[k])}"
             )
     return res
